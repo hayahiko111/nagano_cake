@@ -1,0 +1,29 @@
+<h1>商品一覧</h1>
+<%= link_to new_admin_item_path, method: :get do %>
+  <i class="fa-solid fa-circle-plus"></i>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <thジャンル></th>
+      <th>販売ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @items.each do |item| %>
+  <% @genres.each do |genre|  %>
+    <tr>
+      <td><%= item.id %></td>
+      <th><%= item.name %></th>
+      <th><%= item.price %></th>
+      <th><%= genre.name %></th>
+      <th><%= item.is_active %></th>
+    </tr>
+  </tbody>
+  <% end %>
+  <% end %>
+</table>
