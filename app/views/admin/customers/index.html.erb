@@ -1,0 +1,22 @@
+<h1>会員一覧</h1>
+<% @customers.each do |c| %>
+
+<table>
+  <tr>
+    <th>会員ID</th>
+    <th>氏名</th>
+    <th>メールアドレス</th>
+    <th>ステータス</th>
+  </tr>
+  <tr>
+    <td><%= c.id %></td>
+    <td><%= c.last_name+c.first_name %></td>
+    <td><%= c.email %></td>
+    <td><% if c.is_deleted == false %>
+          <%= "有効" %>
+        <% else %>
+          <%= "退会" %>
+        <% end %></td>
+  </tr>
+</table>
+<% end %>

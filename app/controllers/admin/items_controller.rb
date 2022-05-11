@@ -8,9 +8,9 @@ class Admin::ItemsController < ApplicationController
     @item=Item.new(item_params)
     if @item.save
       flash[:notice] = "You have created item successfully."
-      redirect_to admin_genres_path
+      redirect_to admin_items_path
     else
-      render:index
+      render:new
     end
   end
 
@@ -20,9 +20,23 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item=Item.find(params[:id])
   end
 
   def edit
+    @item=Item.find(params[:id])
+    @genres=Genre.all
+  end
+
+  def update
+    @item=Item.find(params[:id],)
+    if @item.update(item_params)
+      flash[:notice] = "You have created item successfully."
+      redirect_to admin_item_path(@item.id)
+    else
+      render:edit
+    end
+
   end
 
   private

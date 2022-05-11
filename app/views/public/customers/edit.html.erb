@@ -1,0 +1,33 @@
+<h1>会員情報編集</h1>
+<table>
+  <%= form_with model: @customer, url: edit_customers_path, method: :patch do |f| %>
+  <tr><div class="field">
+    <td><%= f.label :last_name, "氏名" %></td>
+    <td><%= f.text_field :last_name %></td>
+    <td><%= f.text_field :first_name %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :last_name, "フリガナ" %></td>
+    <td><%= f.text_field :last_name_kana %></td>
+    <td><%= f.text_field :first_name_kana %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :postal_code, "郵便番号" %></td>
+    <td><%= f.text_field :postal_code %></td>
+  </div></tr>
+  <tr><tr><div class="field">
+    <td><%= f.label :address, "住所" %></td>
+    <td><%= f.text_area :address %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :telephone_number, "電話番号" %></td>
+    <td><%= f.text_field :telephone_number %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :email, "メールアドレス" %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    <td> <%= f.submit '編集内容を保存', class:"btn btn-success" %></td>
+  </div></tr>
+  <% end %>
+</table>
+<%= link_to "退会する", customers_confirm_path %>

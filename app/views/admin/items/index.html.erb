@@ -8,23 +8,24 @@
       <th>商品ID</th>
       <th>商品名</th>
       <th>税抜価格</th>
-      <thジャンル></th>
+      <th>ジャンル</th>
       <th>販売ステータス</th>
     </tr>
   </thead>
 
   <tbody>
   <% @items.each do |item| %>
-  <% @genres.each do |genre|  %>
     <tr>
       <td><%= item.id %></td>
-      <th><%= item.name %></th>
+      <th><%= link_to item.name, admin_item_path(item.id) %></th>
       <th><%= item.price %></th>
-      <th><%= genre.name %></th>
-      <th><%= item.is_active %></th>
+      <th><%= item.genre.name %></th>
+      <th><% if item.is_active == true %>
+            <%= "販売中" %>
+          <% else %>
+            <%= "販売停止中" %>
+          <% end %></th>
     </tr>
+  <% end %>
   </tbody>
-  <% end %>
-  <% end %>
 </table>
-<h3>hoge</h3>
