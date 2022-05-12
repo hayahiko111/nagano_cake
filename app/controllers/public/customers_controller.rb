@@ -22,8 +22,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer=current_customer(params)
-    @customer.update(is_deleted)
+    @customer=current_customer
+    @customer.update(is_deleted: true)
+    session[:customer_id] = nil
     redirect_to root_path
   end
 
@@ -31,9 +32,5 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
-  end
-
-  def is_deleted
-    params.require(:customer).permit(:is_deleted)
   end
 end

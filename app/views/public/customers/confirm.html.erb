@@ -4,4 +4,4 @@
 退会する場合は、「退会する」をクリックしてください。</p>
 
 <%= link_to "退会しない", customers_current_customer_path %>
-<%= button_to "退会する", customers_withdraw_path(@customer), method: :patch, params: { is_deleted: 'true'} %>
+<%= button_to "退会する", customers_withdraw_path, method: :patch %>

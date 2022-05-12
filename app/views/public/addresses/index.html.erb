@@ -26,13 +26,16 @@
       <td></td>
     </tr>
   </thead>
-  <% @addresses.each do |a| %>
+  <% @addresses.each do |addresses| %>
   <tbody>
     <tr>
-      <td><%= a.postal_code %></td>
-      <td><%= a.address %></td>
-      <td><%= a.name %></td>
-      <td></td>
+      <td><%= addresses.postal_code %></td>
+      <td><%= addresses.address %></td>
+      <td><%= addresses.name %></td>
+      <td>
+        <%= link_to "編集する", edit_address_path(addresses.id) %>
+        <%= link_to "削除する", address_path(addresses.id), method: :delete %>
+      </td>
     </tr>
   </tbody>
 </table>
