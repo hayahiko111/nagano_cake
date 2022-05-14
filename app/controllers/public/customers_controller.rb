@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
     @customer=current_customer(params)
     if @customer.update(customer_params)
       flash[:notice] = "You have created genre successfully."
-      redirect_to customers_path
+      redirect_to customer_path(@customer.id)
     else
       render:edit
     end

@@ -10,7 +10,11 @@
   </tr>
   <tr>
     <td><%= c.id %></td>
-    <td><%= c.last_name+c.first_name %></td>
+    <td>
+      <%= link_to admin_customer_path(c.id) do %>
+        <%= c.last_name+c.first_name %>
+      <% end %>
+    </td>
     <td><%= c.email %></td>
     <td><% if c.is_deleted == false %>
           <%= "有効" %>

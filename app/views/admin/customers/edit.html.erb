@@ -1,2 +1,44 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h1><%= @customer.last_name+@customer.first_name+"さんの会員情報編集" %></h1>
+<table>
+  <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+  <tr><div class="field">
+    <td><%= f.label :last_name, "氏名" %></td>
+    <td><%= f.text_field :last_name %></td>
+    <td><%= f.text_field :first_name %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :last_name, "フリガナ" %></td>
+    <td><%= f.text_field :last_name_kana %></td>
+    <td><%= f.text_field :first_name_kana %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :postal_code, "郵便番号" %></td>
+    <td><%= f.text_field :postal_code %></td>
+  </div></tr>
+  <tr><tr><div class="field">
+    <td><%= f.label :address, "住所" %></td>
+    <td><%= f.text_area :address %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :telephone_number, "電話番号" %></td>
+    <td><%= f.text_field :telephone_number %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :email, "メールアドレス" %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </div></tr>
+  <tr><div class="field">
+    <td><%= f.label :is_deleted, "会員ステータス" %></td>
+    <td>
+      <%= f.radio_button :is_deleted, :false %>
+      <%= f.label :is_deleted, "有効" %>
+      <%= f.radio_button :is_deleted, :true %>
+      <%= f.label :is_deleted, "退会" %>
+    </td>
+  </div></tr>
+  <tr>
+    <td></td>
+    <td><%= f.submit '変更を保存' %></td>
+  </tr>
+  <% end %>
+</table>
