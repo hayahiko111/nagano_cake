@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :items, only:[:index, :show]
   end
+
   scope module: :public do
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
