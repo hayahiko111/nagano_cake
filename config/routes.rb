@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  namespace :public do
+  scope module: :public do
+    get 'cart_items/index'
+  end
+  scope module: :public do
     resources :items, only:[:index, :show]
   end
 

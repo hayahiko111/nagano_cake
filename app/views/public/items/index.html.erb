@@ -2,8 +2,10 @@
 <% @items.each do |i| %>
 
 <div>
-  <%= image_tag i.get_image(100,200) %>
-  <%= i.name %>
+  <%= link_to item_path(i.id) do %>
+    <%= image_tag i.get_image(100,200) %>
+    <%= i.name %>
+  <% end %>
   <span>￥</span><%= i.price %>
 </div>
 <% end %>
