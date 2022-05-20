@@ -16,7 +16,7 @@
   </tr>
   <tr>
     <td><%= label :price, "税込価格" %></td>
-    <td rowspan="2"><%= (@item.price*1.1).floor %><span>(<%= @item.price %>)</span><span>円</span></td>
+    <td rowspan="2"><%= @item.with_tax_price.to_s(:delimited) %><span>(<%= @item.price.to_s(:delimited) %>)</span><span>円</span></td>
   </tr>
   <tr>
     <td><%= label :price, "(税抜価格)" %></td>
