@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   scope module: :public do
+    resources :orders, only:[:new, :index, :show]
+    get 'orders/confirm'
+    get 'orders/complete'
+  end
+
+  scope module: :public do
     resources :cart_items, only:[:index, :update, :create]
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     delete "cart_items/:id" => "cart_items#destroy_one"
