@@ -1,2 +1,50 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<h1>注文情報確認</h1>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart_item.each do |c_item| %>
+    <tr>
+      <td><%= c_item.item.name %></td>
+      <td><%= c_item.item.with_tax_price.to_s(:delimited) %></td>
+      <td><%= c_item.amount %></td>
+      <td><%= c_item.subtotal.to_s(:delimited) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <tr>
+    <td>送料</td>
+    <td>800</td>
+  </tr>
+  <tr>
+    <td>商品合計</td>
+    <td><%= @total_price.to_s(:delimited) %></td>
+  </tr>
+  <tr>
+    <td>請求金額</td>
+    <td><%= (800+@total_price).to_s(:delimited) %></td>
+  </tr>
+</table>
+
+<h4>支払い方法</h4>
+<%= @order.payment_method %>
+
+<h4>お届け先</h4>
+<%= '〒' + @order.postal_code + ' ' + @order.address %>
+<%= @order.name %>
+
+<%= form_with model: @order, url:orders_path do |f| %>
+  <%= f.hidden_field :shipping_cost, :value => 800.to_s %>
+  <%= f.hidden_field :total_payment, :value => (800+@total_price).to_s(:delimited) %>
+  <%= f.submit "注文を確定する" %>
+<% end %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope module: :public do
-    resources :orders, only:[:new, :index, :show]
-    get 'orders/confirm'
+    resources :orders, only:[:new, :index, :show, :create]
+    post 'orders/confirm'
     get 'orders/complete'
   end
 
