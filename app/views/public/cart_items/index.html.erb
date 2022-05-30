@@ -33,8 +33,8 @@
   <tr>
     <td>合計金額</td>
     <td><%= @total_price.to_s(:delimited) %></td>
-    <%= form_with url:orders_complete_path do |f| %>
-      <%= f.hidden_field :tolal_price, :value => @total_price.to_s(:delimited) %>
+    <%= form_with model:@order, url:new_order_path do |f| %>
+      <%= f.hidden_field :total_payment, :value => (800+@total_price).to_s(:delimited) %>
     <% end %>
   </tr>
 </table>

@@ -61,3 +61,4 @@ gem 'mini_magick'
 gem 'image_processing'
 gem 'kaminari'
 gem "enum_help"
+gem 'pry-byebug', group: :development

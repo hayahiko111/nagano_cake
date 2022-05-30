@@ -5,8 +5,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @order=Order.new
     @address=Address.where(customer_id: current_customer.id)
-    @order=Order.new(order_params)
+    @cart_item=CartItem.where(customer_id: current_customer.id)
+    @order.shipping_cost=800
+    @order.payment_method = params[:order][:payment_method]
     if params[:order][:select_address].to_i == 0
       @order.postal_code=current_customer.postal_code
       @order.address=current_customer.address
@@ -20,14 +23,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @cart_item=CartItem.where(customer_id: current_customer.id)
     @order=Order.new(order_params)
-    if @order=Order.save
-      @order_detail=OrderDetail.new
-      
+    @cart_item=CartItem.where(customer_id: current_customer.id)
+    if @order.save
+      @cart_item.each do |c_item|
+        @order_detail=OrderDetail.new
+        @order_detail.item_id = c_item.item_id
+        @order_detail.amount = c_item.amount
+        @order_detail.price = c_item.item.with_tax_price
+        @order_detail.order_id = @order.id
+        @order_detail.save
+      end
+      @cart_item.destroy_all
       redirect_to orders_complete_path
-    else
-      render:confirm
     end
   end
 
