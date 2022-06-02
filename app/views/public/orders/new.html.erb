@@ -1,5 +1,5 @@
 <h1>注文情報入力</h1>
-<%= form_with model: @order, url:orders_confirm_path do |f| %>
+<%= form_with model: @order, url:confirm_orders_path do |f| %>
 <field>
   <h4>支払い方法</h4>
   <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>

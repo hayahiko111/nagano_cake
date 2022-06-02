@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   scope module: :public do
-    resources :orders, only:[:new, :index, :show, :create]
-    post 'orders/confirm'
-    get 'orders/complete'
+    resources :orders, only:[:new, :index, :show, :create] do
+      collection do
+        get 'complete'
+        post 'confirm'
+      end
+    end
   end
 
   scope module: :public do

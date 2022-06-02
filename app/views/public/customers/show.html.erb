@@ -26,4 +26,5 @@
     <td><%= @customer.email %></td>
   </tr>
 </table>
-<%= button_to "配送先一覧", {controller: 'addresses', action: 'index'}, {method: :get } %>
+<span>配送先<%= button_to "一覧を見る", {controller: 'addresses', action: 'index'}, {method: :get } %></span>
+<span>注文履歴<%= button_to "一覧", {controller: 'orders', action: 'index'}, {method: :get } %></span>

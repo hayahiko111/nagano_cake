@@ -35,18 +35,19 @@ class Public::OrdersController < ApplicationController
         @order_detail.save
       end
       @cart_item.destroy_all
-      redirect_to orders_complete_path
+      redirect_to complete_orders_path
     end
   end
 
   def complete
-
   end
 
   def index
+    @orders=Order.where(customer_id: current_customer.id)
   end
 
   def show
+    @order=Order.find(params[:id])
   end
 
   private
