@@ -1,62 +1,70 @@
-<h1>注文履歴詳細</h1>
-<field>
-  <h3>注文情報</h3>
-  <table>
-    <tr>
-      <td>注文日</td>
-      <td><%= l @order.created_at %></td>
-    </tr>
-    <tr>
-      <td>配送先</td>
-      <td>
-        <%= @order.postal_code %><br>
-        <%= @order.address %><br>
-        <%= @order.name %>
-      </td>
-    </tr>
-    <tr>
-      <td>支払い方法</td>
-      <td><%= @order.payment_method_i18n %></td>
-    </tr>
-    <tr>
-      <td>ステータス</td>
-      <td><%= @order.order_status_i18n %></td>
-    </tr>
-  </table>
-</field>
-<field>
-  <h3>請求情報</h3>
-  <table>
-    <tr>
-      <td>商品合計</td>
-      <td><%= (@order.total_payment-@order.shipping_cost).to_s(:delimited) %></td>
-    </tr>
-    <tr>
-      <td>配送料</td>
-      <td><%= @order.shipping_cost.to_s(:delimited) %></td>
-    </tr>
-    <tr>
-      <td>ご請求額</td>
-      <td><%= @order.total_payment.to_s(:delimited) %></td>
-    </tr>
-  </table>
-</field>
-<field>
-  <h3>注文内容</h3>
-  <table>
-    <tr>
-      <th>商品</th>
-      <th>単価(税込)</th>
-      <th>個数</th>
-      <th>小計</th>
-    </tr>
-    <% @order.order_details.each do |order_detail| %>
-    <tr>
-      <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.price %></td>
-      <td><%= order_detail.amount %></td>
-      <td><%= order_detail.price*order_detail.amount %></td>
-    </tr>
-    <% end %>
-  </table>
-</field>
+<div class="container">
+  <h1>注文履歴詳細</h1>
+  <div class="d-flex">
+  <field class="col-lg-6">
+    <h3>注文情報</h3>
+    <table class="table table-bordered">
+      <tr>
+        <td class="table-active">注文日</td>
+        <td><%= l @order.created_at %></td>
+      </tr>
+      <tr>
+        <td  class="table-active">配送先</td>
+        <td>
+          <%= '〒' + @order.postal_code %><br>
+          <%= @order.address %><br>
+          <%= @order.name %>
+        </td>
+      </tr>
+      <tr>
+        <td  class="table-active">支払い方法</td>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <td  class="table-active">ステータス</td>
+        <td><%= @order.order_status_i18n %></td>
+      </tr>
+    </table>
+  </field>
+
+  <field class="col-lg-3">
+    <h3>請求情報</h3>
+    <table class="table table-bordered">
+      <tr>
+        <td  class="table-active">商品合計</td>
+        <td><%= (@order.total_payment-@order.shipping_cost).to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <td  class="table-active">配送料</td>
+        <td><%= @order.shipping_cost.to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <td  class="table-active">ご請求額</td>
+        <td><%= @order.total_payment.to_s(:delimited) %></td>
+      </tr>
+    </table>
+  </field>
+  </div>
+  <div class="d-flex">
+  <field class="col-lg-8">
+    <h3>注文内容</h3>
+    <table class="table table-bordered">
+      <tr  class="table-active">
+        <th>商品</th>
+        <th>単価(税込)</th>
+        <th>個数</th>
+        <th>小計</th>
+      </tr>
+      <% @order.order_details.each do |order_detail| %>
+      <tr>
+        <td><%= order_detail.item.name %></td>
+        <td><%= order_detail.price %></td>
+        <td><%= order_detail.amount %></td>
+        <td><%= order_detail.price*order_detail.amount %></td>
+      </tr>
+      <% end %>
+    </table>
+  </field>
+  <div class="col-lg-4"></div>
+  </div>
+</div>

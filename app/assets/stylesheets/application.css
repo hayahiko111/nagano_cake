@@ -13,3 +13,136 @@
  *= require_tree .
  *= require_self
  */
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+body{
+  text-decoration: none;
+}
+
+header a{
+  color: black;
+}
+
+header .btn{
+  margin: 10px;
+}
+
+main{
+  height:300px;
+  background-image: url(cake.jpg);
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}
+
+main::after{
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height:100%;
+  background-color: white;
+  opacity: 0.5;
+}
+
+main p{
+  position: relative;
+  z-index: 3;
+  width:470px;
+  height:150px;
+  background-color: white;
+}
+
+.item_image, .item_name, .item_price{
+  width:250px;
+  color: black;
+}
+
+.item_index{
+  margin-top:50px;
+}
+
+.show_continer{
+  margin-left: 50px;
+}
+
+.item_show{
+  margin-top: 50px;
+}
+
+.show_continer h3{
+  display: inline-block
+}
+
+.cart_item_index h1{
+  display: inline-block
+}
+
+.info_enter_btn{
+  margin-top:40px;
+}
+
+.payment_method, .my_address, .selected_address, .new_address{
+  text-indent: 1rem;
+  margin-bottom: 0;
+}
+
+.my_address_name, .address_list, .new_address_form{
+  text-indent: 3.5rem;
+  margin-bottom: 0;
+}
+
+.order_new{
+  margin-left: 300px;
+}
+
+.confirm_right{
+  margin-left:100px
+}
+
+.cart_item_confirm field{
+  margin-top:50px;
+}
+
+.complete{
+  margin-top: 200px
+}
+
+.customer_show h3{
+  display: inline-block;
+  margin-right: 25px;
+}
+
+.customer_show .index{
+  margin-top: 20px
+}
+
+.no_withdraw{
+  margin-right: 10px;
+}
+
+.withdraw{
+  margin-left: 10px;
+}
+
+.customer_confirm h3{
+  margin-top: 100px;
+}
+
+.customer_confirm p{
+  margin:50px 0;
+}
+
+.container .shipping{
+  margin:25px 0 40px 0;
+}

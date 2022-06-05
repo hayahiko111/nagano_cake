@@ -1,30 +1,41 @@
-<h1>マイページ</h1>
-<h3>登録情報</h3><%= link_to "編集する", edit_customers_path %>
-<table>
-  <tr>
-    <td>氏名</td>
-    <td><%= @customer.last_name+" "+@customer.first_name %></td>
-  </tr>
-  <tr>
-    <td>カナ</td>
-    <td><%= @customer.last_name_kana+" "+@customer.first_name_kana %></td>
-  </tr>
-  <tr>
-    <td>郵便番号</td>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  <tr>
-    <td>住所</td>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <td>電話番号</td>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-  </tr>
-</table>
-<span>配送先<%= button_to "一覧を見る", {controller: 'addresses', action: 'index'}, {method: :get } %></span>
-<span>注文履歴<%= button_to "一覧", {controller: 'orders', action: 'index'}, {method: :get } %></span>
+<div class="container customer_show"><h1>マイページ</h1>
+  <h3>登録情報</h3>
+  <%= link_to "編集する", edit_customers_path, class:"btn btn-success align-self-center" %>
+  <div class="d-flex">
+  <table class="table table-bordered col-lg-8">
+    <tr>
+      <td class="col-lg-4 table-active">氏名</td>
+      <td class="col-lg-8"><%= @customer.last_name+" "+@customer.first_name %></td>
+    </tr>
+    <tr>
+      <td class="table-active">カナ</td>
+      <td><%= @customer.last_name_kana+" "+@customer.first_name_kana %></td>
+    </tr>
+    <tr>
+      <td class="table-active">郵便番号</td>
+      <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <td class="table-active">住所</td>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td class="table-active">電話番号</td>
+      <td><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+      <td class="table-active">メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+  </table>
+  </div>
+  <div class="col-lg-4"></div>
+  <div class="d-flex index">
+    <h4>配送先　　　</h4>
+    <%= button_to "一覧を見る", {controller: 'addresses', action: 'index'}, {method: :get, class:"btn btn-primary" } %>
+  </div>
+  <div class="d-flex index">
+    <h4>注文履歴　　</h4>
+    <%= button_to "一覧を見る", {controller: 'orders', action: 'index'}, {method: :get, class:"btn btn-primary" } %>
+  </div>
+</div>

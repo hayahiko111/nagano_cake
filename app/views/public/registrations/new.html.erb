@@ -1,9 +1,10 @@
-<h2>Sign up</h2>
+<div class="container">
+<h2>新規会員登録</h2>
 
 <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer' do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-<table>
+<table class="table table-borderless">
   <tr><div class="field">
     <td><%= f.label :last_name, "名前" %></td>
     <td><span>(性)</span><%= f.text_field :last_name %></td>
@@ -48,10 +49,10 @@
 
   <tr><div class="actions">
     <td></td>
-    <td><%= f.submit "Sign up" %></td>
+    <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
     <td></td>
   </div></tr>
 </table>
 <% end %>
-
+</div>
 <%= render "public/shared/links" %>

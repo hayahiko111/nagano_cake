@@ -1,7 +1,8 @@
+<div class="container">
 <h2>ログイン</h2>
-<h3>会員の方はこちらからログイン</h3>
+<h4>会員の方はこちらからログイン</h4>
 <%= form_with model: @customer, url: customer_session_path do |f| %>
-<table>
+<table class="table table-borderless">
   <tr><div class="field">
     <td><%= f.label :email, "メールアドレス" %></td>
     <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
@@ -14,9 +15,10 @@
 
   <tr><div class="actions">
     <td></td>
-    <td><%= f.submit "ログイン" %></td>
+    <td><%= f.submit "ログイン", class:"btn btn-primary" %></td>
   </div></tr>
 </table>
 <% end %>
+</div>
 
 <%= render "public/shared/links" %>

@@ -13,23 +13,35 @@
 
   <body>
     <header>
-     <% if admin_signed_in? %>
-      <li><%= link_to "商品一覧", admin_items_path %></li>
-      <li><%= link_to "会員一覧", admin_customers_path %></li>
+      <div class="container">
 
-      <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
-      <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+       <div class="d-flex">
+         <div class="mr-auto p-2"><!--一つだけ左に残す　"mr-auto p-2"-->
+           <%= link_to root_path do %>
+             <%= image_tag 'logo.png', size: '150x75' %>
+           <% end %>
+         </div>
+         <% if admin_signed_in? %>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "商品一覧", admin_items_path %></li></div><!--残りを右へ　"p-2"-->
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "会員一覧", admin_customers_path %></li></div>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "ジャンル一覧", admin_genres_path %></li></div>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li></div>
 
-     <% elsif customer_signed_in? %>
-      <li><%= link_to "マイページ", customers_current_customer_path %></li>
-      <li><%= link_to "商品一覧", items_path %></li>
-      <li><%= link_to "カート", cart_items_path %></li>
-      <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+         <% elsif customer_signed_in? %>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "About", homes_about_path %></li></div>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "マイページ", customers_current_customer_path %></li></div>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "商品一覧", items_path %></li></div>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "カート", cart_items_path %></li></div>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li></div>
 
-     <% else %>
-      <li><%= link_to "新規登録", new_customer_registration_path %></li>
-      <li><%= link_to "ログイン", new_customer_session_path %></li>
-     <% end %>
+         <% else %>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "About", homes_about_path %></li></div>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "新規登録", new_customer_registration_path %></li></div>
+          <div class="p-2 align-self-center btn btn-outline-secondary"><li><%= link_to "ログイン", new_customer_session_path %></li></div>
+         <% end %>
+         </div>
+       </div>
+      </div>
     </header>
 
     <%= yield %>
