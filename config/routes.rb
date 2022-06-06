@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :order_details, only:[:update]
+  end
+
+  namespace :admin do
+    resources :orders, only:[:show, :update]
+  end
+
+  scope module: :admin do
+    get "admin" => "homes#top"
+  end
+
   scope module: :public do
     resources :orders, only:[:new, :index, :show, :create] do
       collection do
