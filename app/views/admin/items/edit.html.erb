@@ -1,25 +1,39 @@
-<h1>商品編集</h1>
-<%= form_with model: @item, url:admin_item_path(@item.id), method: :patch do |f| %>
-
-  <%= f.label :image, "商品画像" %>
-  <%= f.file_field :image, accept: "image/*" %><br />
-
-  <%= f.label :name, "商品名" %>
-  <%= f.text_field :name %><br />
-
-  <%= f.label :introduction, "商品説明" %>
-  <%= f.text_area :introduction %><br />
-
-  <%= f.label :genre_id, "ジャンル" %>
-  <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id]}, { include_blank: '-- 選択してください --'} %><br />
-
-  <%= f.label :price, "税抜き価格" %>
-  <%= f.text_field :price, class:"price" %><%= f.label "円", class:"price" %><br />
-
-  <%= f.label :is_active, "販売ステータス" %>
-  <%= f.radio_button :is_active, :true %>
-  <%= f.label :is_active, "販売中" %>
-  <%= f.radio_button :is_active, :false %>
-  <%= f.label :is_active, "販売停止中" %><br />
-  <input  class="btn btn-success" <%= f.submit '変更を保存' %>
-<% end %>
+<div class="container admin_item_edit">
+<h3>商品編集</h3>
+<table class="row justify-content-center">
+    <%= form_with model: @item, url:admin_item_path(@item.id), method: :patch do |f| %>
+    <tr>
+      <td><%= f.label :image, "商品画像" %></td>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :name, "商品名" %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :introduction, "商品説明" %></td>
+      <td><%= f.text_area :introduction %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :genre_id, "ジャンル" %></td>
+      <td><%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id]}, { include_blank: '-- 選択してください --'} %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :price, "税抜き価格" %></td>
+      <td><%= f.text_field :price, class:"price" %><%= f.label "円", class:"price" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :is_active, "販売ステータス" %></td>
+      <td>
+        <%= f.radio_button :is_active, :true %>
+        <%= f.label :is_active, "販売中" %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :is_active, "販売停止中" %>
+      </td>
+    </tr>
+  </table>
+  <div class="text-center info_enter_btn">
+    <%= f.submit '変更を保存', class:"btn btn-success" %>
+    <% end %>
+  </div>
+</div>

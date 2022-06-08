@@ -19,11 +19,7 @@
           <% end %>
           </td>
         <td><%= order.customer.last_name+order.customer.first_name %></td>
-        <td>
-          <% order.order_details.each do |order_detail| %>
-            <%= @amount + order_detail.amount.to_i %>
-          <% end %>
-        </td>
+        <td><%= order.order_details.sum(:amount) %></td>
         <td><%= order.order_status_i18n %></td>
       </tr>
       <% end %>

@@ -1,33 +1,39 @@
-<h1>商品詳細</h1>
-
-<%= image_tag @item.get_image(300,200) %>
-<table>
-  <tr>
-    <td><%= label :name, "商品名" %></td>
-    <td><%= @item.name %></td>
-  </tr>
-  <tr>
-    <td><%= label :introduction, "商品説明" %></td>
-    <td><%= @item.introduction %></td>
-  </tr>
-  <tr>
-    <td><%= label :genre, "ジャンル" %></td>
-    <td><%= @item.genre.name %></td>
-  </tr>
-  <tr>
-    <td><%= label :price, "税込価格" %></td>
-    <td rowspan="2"><%= @item.with_tax_price.to_s(:delimited) %><span>(<%= @item.price.to_s(:delimited) %>)</span><span>円</span></td>
-  </tr>
-  <tr>
-    <td><%= label :price, "(税抜価格)" %></td>
-  </tr>
-  <tr>
-    <td><%= label :is_active, "販売ステータス" %></td>
-    <% if @item.is_active == true %>
-      <td><%= "販売中" %><br /></td>
-    <% else %>
-      <td><%= "販売停止中" %><br /></td>
-    <% end %>
-  </tr>
-</table>
-<%= link_to '編集する', edit_admin_item_path(@item.id) %>
+<div class="container admmin_item_show">
+  <h3>商品詳細</h3>
+  <div class="d-flex">
+  <%= image_tag @item.get_image(300,200), class:"col-lg-3" %>
+  <div class="col-lg-1"></div>
+  <table class="col-lg-5">
+    <tr>
+      <td><%= label :name, "商品名" %></td>
+      <td><%= @item.name %></td>
+    </tr>
+    <tr>
+      <td><%= label :introduction, "商品説明" %></td>
+      <td><%= @item.introduction %></td>
+    </tr>
+    <tr>
+      <td><%= label :genre, "ジャンル" %></td>
+      <td><%= @item.genre.name %></td>
+    </tr>
+    <tr>
+      <td><%= label :price, "税込価格" %></td>
+      <td rowspan="2"><%= @item.with_tax_price.to_s(:delimited) %><span>(<%= @item.price.to_s(:delimited) %>)</span><span>円</span></td>
+    </tr>
+    <tr>
+      <td><%= label :price, "(税抜価格)" %></td>
+    </tr>
+    <tr>
+      <td><%= label :is_active, "販売ステータス" %></td>
+      <% if @item.is_active == true %>
+        <td class="text-success">販売中</td>
+      <% else %>
+        <td class="text-secondary">販売停止中</td>
+      <% end %>
+    </tr>
+  </table>
+  </div>
+  <div class="text-center info_enter_btn">
+    <%= link_to '編集する', edit_admin_item_path(@item.id), class:"btn btn-success" %>
+  </div>
+</div>
