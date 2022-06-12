@@ -5,6 +5,6 @@
   退会する場合は、「退会する」をクリックしてください。</p>
   <div class="d-flex mx-auto" style="width: 240px;">
     <%= link_to "退会しない", customers_current_customer_path, class:"btn btn-primary no_withdraw" %>
-    <%= button_to "退会する", customers_withdraw_path, method: :patch, class:"btn btn-danger withdraw" %>
+    <%= button_to "退会する", customers_withdraw_path, method: :patch, class:"btn btn-danger withdraw" ,"data-confirm" => "本当に削除しますか？" %>
   </div>
 </div>

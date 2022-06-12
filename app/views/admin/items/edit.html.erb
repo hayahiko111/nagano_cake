@@ -1,7 +1,7 @@
 <div class="container admin_item_edit">
 <h3>商品編集</h3>
-<table class="row justify-content-center">
-    <%= form_with model: @item, url:admin_item_path(@item.id), method: :patch do |f| %>
+<%= form_with model: @item, url:admin_item_path(@item.id), method: :patch do |f| %>
+  <table class="row justify-content-center">
     <tr>
       <td><%= f.label :image, "商品画像" %></td>
       <td><%= f.file_field :image, accept: "image/*" %></td>

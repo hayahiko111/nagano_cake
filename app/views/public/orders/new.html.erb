@@ -1,6 +1,8 @@
 <div class="order_new">
   <h1>注文情報入力</h1>
+  <div>
   <%= form_with model: @order, url:confirm_orders_path do |f| %>
+
   <field>
     <h4>支払い方法</h4>
     <p class="payment_method"><%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
@@ -37,8 +39,10 @@
       </tr>
     </table>
   </field>
-  </div>
+
   <div class="text-center info_enter_btn">
     <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
   </div>
   <% end %>
+  </div>
+</div>
